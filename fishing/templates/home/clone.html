@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}(5)Pokes | Facebook{% endblock %}
+{% block content %}
+
+<header>
+        <nav>
+            <ul>
+
+                <li> <a class="" href="#" id="fb"> <i class="fab fa-facebook-f"></i> </a> </li>
+                <li> <button id="search_btn"  > <i class="fas fa-search    "></i> </button> </li>
+                <li> <a class="" data-tooltip="Home" href="#" id="home"> <i class="fas fa-bars    "></i> </a> </li>
+                <li>
+                  {% thumbnail art.avatar.profile_picture "35x35" crop="center" as k %}
+                                 <img width="{{k.width }}" height="{{k.height }}" src="{{ k.url }}" alt="author" style="border-radius: 80%">
+                  {% endthumbnail %}
+                </li>
+                <li><h6 style="margin-top: 0.7em;
+margin-left: 5px;"><b>{{art.avatar.name}}</b></h6></li>
+                
+                <li id="space2"></li>
+                
+                
+               
+               
+                <li> <button  data-tooltip="Add" id="btn_plus"><i class="fas fa-plus    "></i></button> </li>
+                <li> <button  data-tooltip="Message" id="btn_msg"><i class="fab fa-facebook-messenger    "></i></button></li>
+                <li> <button  data-tooltip="Notification" id="btn_bell"> <i class="fas fa-bell    "></i></button></li>
+                <li>  <button  data-tooltip="Profile" id="btn_profile"><i class="fas fa-user-cog    "></i></button>  </li>
+                
+            </ul>
+        </nav>
+    </header>
+
+<div class="container">
+	<div class="row " style="margin-top: 2em;">
+		<div class="col-lg-2 col-md-2">
+			
+		</div>
+		<!-- end column -->
+		<div class="col-lg-8 col-md-8 col-sm-12 ">
+			<input class="form-control" type="text" placeholder=" Trouver des amis a quit envoyer un poke" aria-label="default input example">
+			<h5 style="margin-top: 0.5em;margin-bottom: 0.5em;"><b>Pokes suggérés</b></h5>
+			<!-- create pokesMe -->
+			<div class="row shadow-sm p-3 mb-5 bg-white rounded" >
+				{% for s in poke %}
+				<div class="col-lg-1 col-md-1 col-sm-2 col-xs-2" >
+					{% thumbnail s.poke_add_image "40x40" crop="center" as k %}
+					<img  width="{{k.width }}" height="{{k.height }}" src="{{k.url}}" class="rounded-circle" alt="...">
+					{% endthumbnail %}
+				</div>
+				<!-- end column -->
+				<div class="col-lg-7 col-md-7 col-sm-4 col-xs-4" style="">
+					<h6 style="color: grey;font-size: 15px;"><span style="color: black;font-size: 16px;"><b>{{s.poke_add_me}}</h6>
+					
+				</div>
+				<!-- end column -->
+				<div class="col-lg-4 col-md-4 col-sm-5 col-xs-5">
+					<a class="btn btn-primary" href="/profile/{{art.id}}/{{art.slug}}/profilephpid=100028712344302/" role="button"><b><i class="far fa-hand-point-right"></i> poke a envoyé</b></a>
+					
+				</div>
+				<!-- end column -->
+				{% endfor %}
+				
+				
+			</div>
+			<!-- end row -->
+			<!-- end create pokesMe -->
+
+			
+
+			
+
+			
+			
+			
+		</div>
+		<div class="col-lg-2 col-md-2"></div>
+		
+	</div>
+	<!-- end row -->
+	
+</div>
+
+
+
+{% endblock %}

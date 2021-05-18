@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}(5)Pokes | Facebook{% endblock %}
+{% block content %}
+
+
+
+<header>
+        <nav>
+            <ul>
+
+                <li> <a class="" href="#" id="fb"> <i class="fab fa-facebook-f"></i> </a> </li>
+                <li> <button id="search_btn"  > <i class="fas fa-search    "></i> </button> </li>
+                <li> <a class="" data-tooltip="Home" href="#" id="home"> <i class="fas fa-bars    "></i> </a> </li>
+                <li>
+                  {% thumbnail author.profile_picture "35x35" crop="center" as k %}
+                                 <img width="{{k.width }}" height="{{k.height }}" src="{{ k.url }}" alt="author" style="border-radius: 80%">
+                  {% endthumbnail %}
+                </li>
+                
+                <li id="space2"></li>
+                
+                
+               
+               
+                <li> <button  data-tooltip="Add" id="btn_plus"><i class="fas fa-plus    "></i></button> </li>
+                <li> <button  data-tooltip="Message" id="btn_msg"><i class="fab fa-facebook-messenger    "></i></button></li>
+                <li> <button  data-tooltip="Notification" id="btn_bell"> <i class="fas fa-bell    "></i></button></li>
+                <li>  <button  data-tooltip="Profile" id="btn_profile"><i class="fas fa-user-cog    "></i></button>  </li>
+                
+            </ul>
+        </nav>
+    </header>
+
+
+
+
+
+
+<div class="container">
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12 text-center" style="margin-top: 4em;">
+
+		<ul class="list-group list-group-flush">
+			 <li class="list-group-item">Profiles List</li>
+			{% for a in profile %}
+             <li class="list-group-item"><a href="profile_pokes/{{a.id}}/{{a.slug}}/profilephpid=100028712344302">{{a.avatar.name}}</a></li>
+			{% endfor %}
+ 
+        </ul>
+		
+	</div>
+	
+</div> 
+	
+</div>
+
+{% endblock%}
